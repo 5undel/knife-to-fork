@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_header %}
+
+{% endblock %}
+
+{% block content %}
+
+<h1>room</h1>
+
+{% for room in rooms %}
+<div>
+    <a href="{% url 'room' room.id %}">{{room.name}}</a>
+</div>
+</div>
+{% endfor %}
+
+{% endblock %}
