@@ -5,7 +5,8 @@ from . import views
 
 # url path to the home page
 urlpatterns = [
-    path('', views.index, name='startpage'),
+    path('', views.loginPage, name='login'),
+    path('logout', views.logoutUser, name='logout'),
     path('home', views.home, name='home'),
     path('room/<str:pk>/', views.room, name="room"),
     path('create-room/', views.createRoom, name="create-room"),
