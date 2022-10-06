@@ -85,6 +85,7 @@ def room(request, pk):
     """ A view to return the main room  page """
     room = Room.objects.get(id=pk)
     room_messages = room.message_set.all()
+    topics = Topic.objects.all()
     participants = room.participants.all()
     if request.method == 'POST':
         message = Message.objects.create(
@@ -96,7 +97,7 @@ def room(request, pk):
         return redirect('room', pk=room.id)
 
     context = {'room': room, 'room_messages': room_messages,
-               'participants': participants}
+               'participants': participants, 'topics': topics}
 
     return render(request, 'base/room.html', context)
 
@@ -115,7 +116,9 @@ def createRoom(request):
     if request.method == 'POST':
         form = RoomForm(request.POST)
         if form.is_valid():
-            form.save()
+            room = form.save(commit=False)
+            room.host = request.user
+            room.save()
             return redirect('home')
 
     context = {'form': form}

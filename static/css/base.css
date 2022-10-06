@@ -341,12 +341,12 @@
   grid-template-columns: 1fr 3fr 1fr;
 }
 
-.home-container, .profile-container a {
+a {
   text-decoration: none;
-  color: rgb(213, 221, 233);
+  color: rgb(3, 70, 50);
 }
 
-.home-container, .profile-container a:hover {
+a:hover {
   text-decoration: none;
   color: #03e9f4;
 }
@@ -355,6 +355,11 @@
   color: red !important;
 }
 
+/* conversation feed  */
+
+.feed-wrapper {
+  border: 2px solid whitesmoke;
+}
 
 /*Error message*/
 
@@ -366,5 +371,23 @@
 
 .room-container {
   display: grid;
-  grid-template-columns: 3fr 1fr;
+  grid-template-columns:1fr 3fr 1fr;
+}
+
+.activity-feed,.feed-feed, .topic-feed, .participants-feed {
+  width: 95%;
+  padding: 40px;
+  background: rgba(30, 1, 53, 0.5);
+  box-sizing: border-box;
+  box-shadow: 0 15px 25px rgba(0,0,0,.6);
+  border: none;
+  border-radius: 10px;
+}
+
+.activity-feed,.feed-feed, .topic-feed, .participants-feed hr {
+  color: #fff;
+}
+
+hr {
+  border: 1px solid  whitesmoke;
 }

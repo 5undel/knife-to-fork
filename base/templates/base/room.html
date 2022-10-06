@@ -6,27 +6,32 @@
 {% endblock %}
 
 {% block content %}
+
 <div class="room-container">
+    <div>
+        {% include 'base/topics_component.html' %}
+    </div>
     <div>
         <h1>{{room.name}}</h1>
 
         <p>{{room.description}}</p>
 
-        <div class="comment-wrapper">
+        <div class="feed-feed">
             <h3>Conversation</h3>
             <hr>
 
             {% for message in room_messages %}
-            <div>
+            <div class="">
                 {% if request.user == message.user %}
                 <a class="delet-btn" href="{% url 'delete-message' message.id %}">Delete</a>
                 {% endif %}
-                <small>@{{message.user}} {{message.created|timesince}} ago</small>
+                <small><a href="{% url 'user-profile' room.host.id %}">@{{message.user}}</a> {{message.created|timesince}} ago</small>
                 <p>{{message.body}}</p>
                 <hr>
             </div>
             {% endfor %}
         </div>
+        <br>
         {% if request.user.is_authenticated %}
         <div class="comment-form">
             <form method="POST" action="">
@@ -36,12 +41,12 @@
         </div>
         {% endif %}
     </div>
-    <div>
+    <div class="participants-feed">
         <h3>Participants</h3>
         <hr>
         {% for user in participants %}
             <div>
-                <p>@{{user.username}}</p>
+                <a href="{% url 'user-profile' room.host.id %}">@{{user.username}}</a>
             </div>
         {%endfor%}
     </div>
