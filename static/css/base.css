@@ -336,17 +336,17 @@
 
 /* home page*/
 
-.home-container {
+.home-container, .profile-container {
   display: grid;
   grid-template-columns: 1fr 3fr 1fr;
 }
 
-.home-container a {
+.home-container, .profile-container a {
   text-decoration: none;
   color: rgb(213, 221, 233);
 }
 
-.home-container a:hover {
+.home-container, .profile-container a:hover {
   text-decoration: none;
   color: #03e9f4;
 }
