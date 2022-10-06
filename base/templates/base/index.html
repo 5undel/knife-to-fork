@@ -38,11 +38,18 @@
     <a href="{% url 'register' %}">Sign Up</a>
   </div>
   {% else %}
-  <div class="login-box">
+  <div class="login-box2">
     <h2>Login</h2>
     <form method="POST" action="">
       {% csrf_token %}
-
+      {{form}}
+      {% if messages %}
+      <ul class="messages">
+        {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+          {% endfor %}
+      </ul>
+      {% endif %}
       <input type="submit" value="Register">
         <span></span>
         <span></span>

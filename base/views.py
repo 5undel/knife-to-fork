@@ -7,6 +7,7 @@ from .models import Room, Topic
 from .forms import RoomForm
 from django.db.models import Q
 from django.contrib.auth.models import User
+from django.contrib.auth.forms import UserCreationForm
 
 
 # Create your views here.
@@ -19,7 +20,7 @@ def loginPage(request):
         return redirect('home')
 
     if request.method == 'POST':
-        username = request.POST.get('username')
+        username = request.POST.get('username').lower()
         password = request.POST.get('password')
 
         try:
@@ -44,8 +45,21 @@ def logoutUser(request):
     return redirect('login')
 
 def registerPage(request):
-    page ='register'
-    return render(request, 'base/index.html')
+    form = UserCreationForm()
+
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save(commit=False)
+            user.username = user.username.lower()
+            user.save()
+            login(request, user)
+            return redirect('home')
+        else:
+            messages.error(request, 'An error occured during registration.')
+
+    context = {'form': form}
+    return render(request, 'base/index.html', context)
 
 def home(request):
     """ A view to return the home page """
