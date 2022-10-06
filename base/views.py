@@ -76,8 +76,8 @@ def home(request):
     room_count = rooms.count()
     room_messages = Message.objects.all()
 
-
-    context = {'rooms': rooms, 'topics': topics, 'room_count': room_count, 'room_messages': room_messages}
+    context = {'rooms': rooms, 'topics': topics,
+               'room_count': room_count, 'room_messages': room_messages}
     return render(request, 'base/home.html', context)
 
 
@@ -148,11 +148,9 @@ def deleteRoom(request, pk):
 @login_required(login_url='login')
 def deleteMessage(request, pk):
     message = Message.objects.get(id=pk)
-
-    if request.user != Message.user:
-        return HttpResponse('You are not allowed here!!!')
-
+    if request.user != message.user:
+        return HttpResponse('You do not have permission to delet this!!')
     if request.method == 'POST':
         message.delete()
         return redirect('home')
-    return render(request, 'base/delete.html', {'obj': message})
+    return render(request, 'base/delete.html', {'object': message})
