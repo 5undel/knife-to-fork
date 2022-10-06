@@ -1,5 +1,5 @@
 <a href="{% url 'home' %}">
-    <h1>Logo</h1>
+    <h1>K2F</h1>
 </a>
 <br>
 <form method="GET" action="{% url 'home' %}">
@@ -7,8 +7,8 @@
 </form>
 
 {% if  request.user.is_authenticated %}
-<br>
-<p>Hello {{request.user}}</p>
+
+<p style="color: white;">Hello {{request.user}}</p>
 <a href="{% url 'logout' %}">Logout</a>
 {% else %}
 
