@@ -14,7 +14,7 @@ from django.contrib.auth.models import User
 
 def loginPage(request):
     """ A view to return the index page """
-
+    page = 'login'
     if request.user.is_authenticated:
         return redirect('home')
 
@@ -35,7 +35,7 @@ def loginPage(request):
         else:
             messages.error(request, 'Username OR Password does not exist.')
 
-    context = {}
+    context = {'page': page}
     return render(request, 'base/index.html', context)
 
 
@@ -43,6 +43,9 @@ def logoutUser(request):
     logout(request)
     return redirect('login')
 
+def registerPage(request):
+    page ='register'
+    return render(request, 'base/index.html')
 
 def home(request):
     """ A view to return the home page """
