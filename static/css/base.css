@@ -6,7 +6,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
-  background-image: linear-gradient(to right, rgb(0, 0, 0), rgb(17, 9, 24), rgb(0, 0, 0));
+  background-image: linear-gradient(to right, rgb(0, 0, 0), rgb(40, 21, 56), rgb(0, 0, 0));
 }
 
 /*  Login page*/
@@ -721,7 +721,7 @@ body {
 
   a {
     text-decoration: none;
-    color: rgb(3, 70, 50);
+    color: hsl(0, 0%, 100%);
   }
 
   a:hover {
@@ -780,3 +780,25 @@ body {
     height: 60%;
     overflow: auto;
   }
+
+
+/* Topic feed */
+.topic-feed {
+  letter-spacing: 1px;
+  line-height: 2.4;
+
+}
+
+.topic-feed a {
+  text-transform: uppercase;
+}
+
+.topic-feed span {
+  color: grey;
+  text-decoration: none;
+  border: solid 2px black;
+  padding: 5px;
+  background-color: rgb(0, 0, 0);
+  border-radius: 20%;
+  height: 1px;
+}
