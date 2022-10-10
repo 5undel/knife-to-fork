@@ -1,7 +1,7 @@
 <div class="feed-feed">
     {% for room in rooms %}
     <div class="feed-wrapper">
-        <small><a href="{% url 'user-profile' room.host.id %}">@{{room.host.username}}</a></small><small> in {{ room.topic.name }}</small>
+        <small><a href="{% url 'user-profile' room.host.id %}"><img class="profile-img" src="/./media/profile.jpg" alt="" style="width: 28px; height: 28px;"> @{{room.host.username}}</a></small><small> in {{ room.topic.name }}</small>
         <div class="delete-btn-">
             {% if request.user == room.host %}
             <a href="{% url 'update-room' room.id %}">Edit</a>

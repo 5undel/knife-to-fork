@@ -1,13 +1,14 @@
+{% if request.user.is_authenticated %}
 <div class="nav-bar">
     <a class="home-link" href="{% url 'home' %}">
-        <h1>K2F</h1>
+        <img style="color: white;" src="../media/logo.png" alt="">
     </a>
     <br>
 
     <div class="user-hello">
         {% if request.user.is_authenticated %}
         <div class="dropdown">
-            <button class="dropbtn" style="color: white;">Hello {{request.user}}</button>
+            <button class="dropbtn" style="color: white;"><img class="profile-img" src="/./media/profile.jpg" alt="" style="width: 28px; height: 28px;"> {{request.user}}</button>
             <div class="dropdown-content">
                 <a href="#">Link 2</a>
                 <a href="#">Link 2</a>
@@ -24,6 +25,6 @@
         </form>
     </div>
 
-
+    {% endif %}
 </div>
 <br>

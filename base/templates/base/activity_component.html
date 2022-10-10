@@ -6,7 +6,7 @@
     <div class="comment-fieald-wrapper">
         {% for message in room_messages %}
         <div class="comment-wrapper">
-            <small><a href="{% url 'user-profile' message.user.id %}">@{{message.user}}</a>
+            <small><a href="{% url 'user-profile' message.user.id %}"><img class="profile-img" src="/./media/profile.jpg" alt="" style="width: 28px; height: 28px;">@{{message.user}}</a>
                 <div class="delete-btn-">
                     {% if request.user == message.user %}
                     <a class="delet-btn" href="{% url 'delete-message' message.id %}">X</a>
