@@ -6,11 +6,36 @@
 {% endblock %}
 
 {% block content %}
+<div class="login-box">
+  <form action="" method="POST">
+    {% csrf_token %}
+    <div class="user-box">
+      <input type="text" name="FisrtName">
+      <label>First Name</label>
+    </div>
+    <div class="user-box">
+      <input type="text" name="LastName">
+      <label>Last Name</label>
+    </div>
+    <div class="user-box">
+      <input type="email" name="email">
+      <label>Email</label>
+    </div>
+    <div class="user-box">
+      <input type="text" name="Bio">
+      <label>Bio</label>
+    </div>
+
+    <br>
+    <input type="submit" value="Save">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+  </form>
+</div>
 <h3>edit profile</h3>
-<form method="post">
-  {% csrf_token %}
-  {{ form }}
-  <button type="submit" class="btn btn-success">Save person</button>
-</form>
+
+
 
 {% endblock %}

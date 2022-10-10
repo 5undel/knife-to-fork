@@ -34,7 +34,7 @@
         <span></span>
     </form>
     
-    <p>Havent signed up yet?</p>
+    <p style="color: white;">Havent signed up yet?</p>
     <a href="{% url 'register' %}">Sign Up</a>
   </div>
   {% else %}
@@ -57,8 +57,8 @@
         <span></span>
         <span></span>
     </form>
-    
-    <p>Already signed up?</p>
+    <br>
+    <p style="color: white;">Already signed up?</p>
     <a href="{% url 'login' %}">Login</a>
   </div>
   {% endif %}

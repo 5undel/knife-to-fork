@@ -16,12 +16,7 @@
             <img class="profile-img" src="/./media/profile.jpg" alt="">
             <h1 style="color: whitesmoke;">@ {{user.username}}</h1>
             <H6 style="color: whitesmoke;">BIO</H6>
-            {% if request.user.is_authenticated %}
-            <form action="" method="POST">
-                {% csrf_token %}
-
-            </form>
-            {% endif %}
+        
         </div>
         {% include 'base/feed_component.html' %}
     </div>
