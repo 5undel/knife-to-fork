@@ -3,13 +3,13 @@
     <div class="create-btn">
         <a href="{% url 'create-topic' %}">Create topic</a>
     </div>
-    <hr>
+    <br>
     <div>
-        <a href="{% url 'home' %}">All <span>{{topics.count}}</span></a>
+        <a href="{% url 'home' %}">All <div class="count-div"><span>{{topics.count}}</span></div></a>
     </div>
     {% for topic in topics %}
     <div>
-        <a href="{% url 'home' %}?q={{topic.name}}">{{topic.name}} <span>{{topic.room_set.all.count}}</span></a>
+        <a href="{% url 'home' %}?q={{topic.name}}">{{topic.name}} <div class="count-div"><span>{{topic.room_set.all.count}}</span></div></a>
     </div>
     {% endfor %}
 </div>

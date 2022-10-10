@@ -11,9 +11,13 @@
         {% include 'base/topics_component.html' %}
     </div>
     <div>
-        <div>
-            <h5>{{room_count}} rooms available</h5><a href="{% url 'create-room'%}">Create Room</a>
+        <div class="room-count">
+            <a class="create-btn-" href="{% url 'create-room'%}">Create Room</a>
+            <h5 style="color:rgb(55, 1, 100);">{{room_count}} rooms available</h5>
         </div>
+        <br>
+        <br>
+        <br>
         {% include 'base/feed_component.html' %}
 
     </div>
