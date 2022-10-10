@@ -1,11 +1,11 @@
 from django.shortcuts import render, redirect
-from django.contrib import messages
 from django.http import HttpResponse
+from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.db.models import Q
 from django.contrib.auth import authenticate, login, logout
 from .models import Room, Topic, Message
 from .forms import RoomForm, TopicRoom
-from django.db.models import Q
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 
@@ -183,3 +183,8 @@ def deleteMessage(request, pk):
         return redirect('home')
     return render(request, 'base/delete.html', {'object': message})
 
+
+@login_required(login_url='login')
+def updateUser(request):
+    
+    return render(request, 'base/update_user.html')

@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_header %}
+
+{% endblock %}
+
+{% block content %}
+<h3>edit profile</h3>
+<form method="post">
+  {% csrf_token %}
+  {{ form }}
+  <button type="submit" class="btn btn-success">Save person</button>
+</form>
+
+{% endblock %}
