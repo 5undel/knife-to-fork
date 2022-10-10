@@ -1,5 +1,8 @@
 <div class="topic-feed">
     <h3>Browse Topics</h3>
+    <div class="create-btn">
+        <a href="{% url 'create-topic' %}">Create topic</a>
+    </div>
     <hr>
     <div>
         <a href="{% url 'home' %}">All <span>{{topics.count}}</span></a>

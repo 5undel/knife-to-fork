@@ -4,7 +4,7 @@ from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
 from .models import Room, Topic, Message
-from .forms import RoomForm
+from .forms import RoomForm, TopicRoom
 from django.db.models import Q
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
@@ -129,6 +129,21 @@ def createRoom(request):
 
 
 @login_required(login_url='login')
+def createTopic(request):
+    form = TopicRoom()
+    if request.method == 'POST':
+        form = TopicRoom(request.POST)
+        if form.is_valid():
+            room = form.save(commit=False)
+            room.host = request.user
+            room.save()
+            return redirect('home')
+
+    context = {'form': form}
+    return render(request, 'base/topic_form.html', context)
+
+
+@login_required(login_url='login')
 def updateRoom(request, pk):
     room = Room.objects.get(id=pk)
     form = RoomForm(instance=room)
@@ -168,3 +183,4 @@ def deleteMessage(request, pk):
         message.delete()
         return redirect('home')
     return render(request, 'base/delete.html', {'object': message})
+

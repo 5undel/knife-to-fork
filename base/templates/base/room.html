@@ -12,23 +12,28 @@
         {% include 'base/topics_component.html' %}
     </div>
     <div>
-        <h1>{{room.name}}</h1>
+        <h1 style="color: whitesmoke;">{{room.name}}</h1>
 
-        <p>{{room.description}}</p>
+        <p style="color: whitesmoke;">{{room.description}}</p>
 
         <div class="feed-feed">
             <h3>Conversation</h3>
             <hr>
 
             {% for message in room_messages %}
-            <div class="">
-                {% if request.user == message.user %}
-                <a class="delet-btn" href="{% url 'delete-message' message.id %}">Delete</a>
-                {% endif %}
-                <small><a href="{% url 'user-profile' room.host.id %}">@{{message.user}}</a> {{message.created|timesince}} ago</small>
-                <p>{{message.body}}</p>
-                <hr>
+            <div class="comment-wrapper">
+                <div class="delete-btn-">
+                    {% if request.user == message.user %}
+                    <a class="delet-btn" href="{% url 'delete-message' message.id %}">x</a>
+                    {% endif %}
+                </div>
+                <small><a href="{% url 'user-profile' room.host.id %}">@{{message.user}}</a></small>
+                <br>
+                <small>{{message.created|timesince}} ago</small>
+                <p class="comment-field">{{message.body}}</p>
+
             </div>
+            <br>
             {% endfor %}
         </div>
         <br>
@@ -36,18 +41,21 @@
         <div class="comment-form">
             <form method="POST" action="">
                 {% csrf_token %}
-                <input type="text" name="body" placeholder="Write your message..." />
+                <input class="room-message" type="text" name="body" placeholder="Write your message..." />
             </form>
         </div>
         {% endif %}
     </div>
     <div class="participants-feed">
-        <h3>Participants</h3>
-        <hr>
+        <div class="participants-feed-header">
+            <h3>Participants</h3>
+            <br>
+        </div>
+
         {% for user in participants %}
-            <div>
-                <a href="{% url 'user-profile' room.host.id %}">@{{user.username}}</a>
-            </div>
+        <div>
+            <a href="{% url 'user-profile' room.host.id %}">@{{user.username}}</a>
+        </div>
         {%endfor%}
     </div>
 </div>

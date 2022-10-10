@@ -1,17 +1,28 @@
 <div class="activity-feed">
-    <h3>Recent Activity</h3>
-    <hr>
-    {% for message in room_messages %}
-    <div>
-        <small><a href="{% url 'user-profile' message.user.id %}">@{{message.user}}</a>
-            {{message.created|timesince}}</small>
-        <small>replied to "{{message.room}}"</small>
-
-        <p>{{message}}</p>
-        {% if request.user == message.user %}
-        <a class="delet-btn" href="{% url 'delete-message' message.id %}">Delete</a>
-        {% endif %}
-        <hr>
+    <div class="activity-feed-header">
+        <h3 >Recent Activity</h3>
+        <br>
     </div>
-    {% endfor %}
+    <div class="comment-fieald-wrapper">
+        {% for message in room_messages %}
+        <div class="comment-wrapper">
+            <small><a href="{% url 'user-profile' message.user.id %}">@{{message.user}}</a>
+                <div class="delete-btn-">
+                    {% if request.user == message.user %}
+                    <a class="delet-btn" href="{% url 'delete-message' message.id %}">X</a>
+                    {% endif %}
+                </div>
+            </small>
+            <br>
+            <small>{{message.created|timesince}}</small>
+
+            <br>
+            <small>replied to "{{message.room}}"</small>
+            <br>
+            <br>
+            <p class="comment-field">{{message}}</p>
+        </div>
+        <br>
+        {% endfor %}
+    </div>
 </div>
