@@ -60,24 +60,30 @@ body {
 .dropdown-content {
   display: none;
   position: absolute;
-  background-color: #f1f1f1;
+  background-color: rgba(49, 2, 88, 0.5);
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(2, 2, 2, 0.568);
   z-index: 1;
 }
 
 .dropdown-content a {
-  color: black;
+  color: whitesmoke;
   padding: 12px 16px;
   text-decoration: none;
   display: block;
 }
 
-.dropdown-content a:hover {background-color: #ddd;}
 
-.dropdown:hover .dropdown-content {display: block;}
 
-.dropdown:hover .dropbtn {background-color: rgba(49, 2, 88, 0.5)}
+.dropdown:hover .dropdown-content {
+  display: block;
+  color: whitesmoke;
+}
+
+.dropdown:hover .dropbtn {
+  background-color: rgba(49, 2, 88, 0.5);
+  color: whitesmoke;
+}
 
 /*  Login page*/
 .login-box {
@@ -848,6 +854,16 @@ hr {
   border: 1px solid whitesmoke;
 }
 
+.dropbtn1 {
+  background-color: rgba(49, 2, 88, 0.5);
+  border: 2px solid rgba(49, 2, 88, 0.5);
+  border-radius: 10px;
+  color: white;
+  
+  font-size: 16px;
+  border: none;
+}
+
 /* Topic feed */
 .topic-feed {
   letter-spacing: 1px;
@@ -931,6 +947,8 @@ hr {
   float: right;
   padding-right: 5px;
 }
+
+
 
 /* Room feed */
 .feed-feed {
