@@ -6,10 +6,10 @@ class ProfileBio(models.Model):
     first_name = models.TextField(null=True, blank=True)
     last_name = models.TextField(null=True, blank=True)
     email = models.EmailField( null=True, blank=True)
-    avatar = models.ImageField(null=True, default="avatar.svg")
+    avatar = models.ImageField(null=True, default="profile.jpg")
 
     def __str__(self):
-        return self.name
+        return self.first_name
 
 class Topic(models.Model):
     name = models.CharField(max_length=200)
