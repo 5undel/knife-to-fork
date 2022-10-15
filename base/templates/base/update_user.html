@@ -6,34 +6,22 @@
 {% endblock %}
 
 {% block content %}
-<div class="login-box">
-  <form action="" method="POST">
-    {% csrf_token %}
-    <div class="user-box">
-      <input type="text" name="FisrtName">
-      <label>First Name</label>
-    </div>
-    <div class="user-box">
-      <input type="text" name="LastName">
-      <label>Last Name</label>
-    </div>
-    <div class="user-box">
-      <input type="email" name="email">
-      <label>Email</label>
-    </div>
-    <div class="user-box">
-      <input type="text" name="Bio">
-      <label>Bio</label>
-    </div>
+<form class="form" action="" method="POST" enctype="multipart/form-data">
+  {% csrf_token %}
 
-    <br>
-    <input type="submit" value="Save">
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-  </form>
-</div>
+  {% for field in form %}
+  <div class="form__group">
+    <label for="profile_pic">{{field.label}}</label>
+    {{field}}
+  </div>
+  {% endfor %}
+
+
+  <div class="form__action">
+    <a class="btn btn--dark" href="index.html">Cancel</a>
+    <button class="btn btn--main" type="submit">Update</button>
+  </div>
+</form>
 <h3>edit profile</h3>
 
 
