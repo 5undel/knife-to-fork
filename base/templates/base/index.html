@@ -42,7 +42,12 @@
     <h2>Login</h2>
     <form method="POST" action="">
       {% csrf_token %}
-      {{form}}
+      {% for field in form %}
+          <div class="">
+            <label for="room_name">{{field.label}}</label>
+            {{field}}
+          </div>
+          {% endfor %}
       {% if messages %}
       <ul class="messages">
         {% for message in messages %}

@@ -1,15 +1,15 @@
 from django.db import models
-from django.contrib.auth.models import User
+from django.contrib.auth.models import  User
 
 class ProfileBio(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    bio = models.TextField(null=True)
     first_name = models.TextField(null=True, blank=True)
     last_name = models.TextField(null=True, blank=True)
-    bio = models.TextField(null=True, blank=True)
-    email_adress = models.EmailField(max_length=254, null=True, blank=True)
+    email = models.EmailField( null=True, blank=True)
+    avatar = models.ImageField(null=True, default="avatar.svg")
 
     def __str__(self):
-        return self.bio
+        return self.name
 
 class Topic(models.Model):
     name = models.CharField(max_length=200)

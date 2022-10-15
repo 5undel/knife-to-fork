@@ -108,7 +108,8 @@ def userProfile(request, pk):
     room_messages = user.message_set.all()
     topics = Topic.objects.all()
     context = {'user': user, 'rooms': rooms,
-               'room_messages': room_messages, 'topics': topics}
+               'room_messages': room_messages, 'topics': topics,
+               }
     return render(request, 'base/profile.html', context)
 
 
@@ -191,7 +192,7 @@ def updateUser(request):
     if request.method == 'POST':
         form = ProfileForm(request.POST, request.FILES, instance=user)
         if form.is_valid():
-            form.save(commit=False)
+            form.save()
             return redirect('user-profile', pk=user.id)
 
     context = {'form': form, 'user': user}
