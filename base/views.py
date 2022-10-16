@@ -186,14 +186,16 @@ def deleteMessage(request, pk):
 
 
 @login_required(login_url='login')
-def updateUser(request):
-    user = request.user
-    form = ProfileForm(instance=user)
+def updateUser(request, pk):
+    user = User.objects.get(id=pk)
+    form = ProfileForm()
     if request.method == 'POST':
-        form = ProfileForm(request.POST, request.FILES, instance=user)
+        form = ProfileForm(request.POST)
         if form.is_valid():
             form.save()
             return redirect('user-profile', pk=user.id)
 
     context = {'form': form, 'user': user}
     return render(request, 'base/update_user.html', context)
+
+

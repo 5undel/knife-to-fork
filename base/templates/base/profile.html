@@ -18,6 +18,7 @@
             <h1 style="color: whitesmoke;">@ {{user.username }}</h1>
             <H6 style="color: whitesmoke;">{{user.email}}</H6>
             <H6 style="color: whitesmoke;"> Joined : {{user.date_joined|date}}</H6>
+            <H6 style="color: whitesmoke;">{{user.bio}}</H6>
         </div>
         {% include 'base/feed_component.html' %}
     </div>

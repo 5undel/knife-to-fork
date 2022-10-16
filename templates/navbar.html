@@ -17,7 +17,7 @@
             <button class="dropbtn" style="color: white;"><img class="profile-img" src="/./media/profile.jpg" alt="" style="width: 28px; height: 28px;"> {{request.user}}</button>
             <div class="dropdown-content">
                 <a href="{% url 'user-profile' user.id %}">{{ request.user }}</a>
-                <a href="{% url 'update-user' %}">Settings</a>
+                <a href="{% url 'update-user' user.id %}">Settings</a>
                 <a href="{% url 'logout' %}">Logout</a>
             </div>
         </div>

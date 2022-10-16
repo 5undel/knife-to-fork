@@ -1,7 +1,10 @@
 from django.db import models
 from django.contrib.auth.models import  User
+from django.dispatch import receiver
+from django.db.models.signals import post_save
 
 class ProfileBio(models.Model):
+    userprofile = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     bio = models.TextField(null=True)
     first_name = models.TextField(null=True, blank=True)
     last_name = models.TextField(null=True, blank=True)
@@ -9,7 +12,7 @@ class ProfileBio(models.Model):
     avatar = models.ImageField(null=True, default="profile.jpg")
 
     def __str__(self):
-        return self.first_name
+        return self.email
 
 class Topic(models.Model):
     name = models.CharField(max_length=200)
@@ -45,3 +48,5 @@ class Message(models.Model):
 
     def __str__(self):
         return self.body[0:50]
+
+

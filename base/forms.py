@@ -6,6 +6,7 @@ class ProfileForm(ModelForm):
     class Meta:
         model = ProfileBio
         fields = '__all__'
+        exclude = ['userprofile']
 
 class RoomForm(ModelForm):
     class Meta:
